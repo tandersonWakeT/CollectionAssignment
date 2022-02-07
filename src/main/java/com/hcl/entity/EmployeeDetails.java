@@ -1,6 +1,6 @@
 package com.hcl.entity;
 
-public class EmployeeDetails {
+public class EmployeeDetails extends Employee{
 
 	private int empId;
 	private String empName;
@@ -8,22 +8,18 @@ public class EmployeeDetails {
 
 	public EmployeeDetails() {
 
-		this.empId = 0;
+		super();
 		this.empName = "";
 		this.empCity = "";
 	}
 
 	public EmployeeDetails(int empId, String empName, String empCity) {
 
-		this.empId = empId;
+		super(empId);
 		this.empName = empName;
 		this.empCity = empCity;
 	}
 	
-	public void setEmpId(int empId) {
-		
-		this.empId = empId;
-	}
 	
 	public void setEmpName(String empName) {
 		
@@ -33,11 +29,6 @@ public class EmployeeDetails {
 	public void setEmpCity(String empCity) {
 		
 		this.empCity= empCity;
-	}
-	
-	public int getEmpId() {
-		
-		return this.empId;
 	}
 	
 	public String getEmpName() {
@@ -53,6 +44,19 @@ public class EmployeeDetails {
 	
 	public String toString() {
 		
-		return "EmpId: " + this.empId + "\nEmpName: " + this.empName + "\nLocation: " + this.empCity + "\n";
+		return "EmpId: " + this.getEmpId() + "\nEmpName: " + this.empName + "\nLocation: " + this.empCity + "\n";
+	}
+	
+	public int compareTo(Employee e) {
+		
+		if (this.getEmpId() > ((EmployeeDetails) e).getEmpId()) {
+			return 1;
+		}
+		else if (this.getEmpId() < ((EmployeeDetails) e).getEmpId()) {
+			return -1;
+		}
+		else {
+			return 0;
+		}
 	}
 }
